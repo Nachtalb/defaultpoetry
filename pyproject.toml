@@ -4,11 +4,14 @@ version = "0.1.0"
 description = ""
 authors = ["Nachtalb <na@nachtalb.io>"]
 readme = "README.md"
-include = ["pyproject.toml", "README.md", "LICENSE"]
-packages = [{ include = "defaultpoetry", from = "src" }]
+include = ["pyproject.toml", "README.md", "LICENSE", "templates"]
+
+[tool.poetry.scripts]
+defaultpoetry = "defaultpoetry.__main__:main"
 
 [tool.poetry.dependencies]
 python = "^3.12"
+tomlkit = "^0.12.3"
 
 [tool.poetry.group.dev.dependencies]
 black = "^24.2.0"
@@ -43,6 +46,10 @@ strict = true
 [[tool.mypy.overrides]]
 module = 'tests'
 no_warn_no_return = true
+
+[[tool.mypy.overrides]]
+module = 'tomlkit'
+ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
