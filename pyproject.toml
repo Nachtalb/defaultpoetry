@@ -1,0 +1,51 @@
+[tool.poetry]
+name = "defaultpoetry"
+version = "0.1.0"
+description = ""
+authors = ["Nachtalb <na@nachtalb.io>"]
+readme = "README.md"
+include = ["pyproject.toml", "README.md", "LICENSE"]
+packages = [{ include = "defaultpoetry", from = "src" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+ruff = "^0.2.2"
+ruff-lsp = "^0.0.52"
+mypy = "^1.8.0"
+isort = "^5.13.2"
+ipdb = "^0.13.13"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.isort]
+profile = "black"
+line_length = 120
+
+[tool.black]
+line-length = 120
+preview = true
+target-version = ["py312"]
+
+[tool.ruff]
+line-length = 120
+
+[tool.mypy]
+python_version = "3.12"
+show_error_codes = true
+pretty = true
+strict = true
+
+[[tool.mypy.overrides]]
+module = 'tests'
+no_warn_no_return = true
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -q"
+asyncio_mode = "auto"
+testpaths = ["tests"]
