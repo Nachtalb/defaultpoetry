@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "defaultpoetry"
 version = "0.1.0"
-description = ""
+description = "A Python project setup tool that scaffolds projects with best practices, including pre-configured settings for black, isort, mypy, pytest, ruff, and more."
 authors = ["Nachtalb <na@nachtalb.io>"]
 readme = "README.md"
 include = ["pyproject.toml", "README.md", "LICENSE", "templates"]
