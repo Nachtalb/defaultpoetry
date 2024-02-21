@@ -1,3 +1,4 @@
+# PYTHON_ARGCOMPLETE_OK
 import argparse
 from contextlib import contextmanager
 from functools import wraps
@@ -5,6 +6,7 @@ from pathlib import Path
 from subprocess import CalledProcessError, run
 from typing import Any, Callable, Generator
 
+import argcomplete
 import tomlkit
 
 DEFAULT_CONFIGURATION_PATH = Path(__file__).parent.parent / "templates"
@@ -364,6 +366,7 @@ def main() -> None:
     install_parser.add_argument("-f", "--force", action="store_true", help="Overwrite existing files")
     install_parser.add_argument("-C", "--no-commit", action="store_true", help="Do not commit the initial files")
 
+    argcomplete.autocomplete(parser)
     args = parser.parse_args()
 
     if hasattr(args, "func"):
